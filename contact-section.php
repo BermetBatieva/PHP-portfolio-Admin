@@ -1,21 +1,29 @@
-<?php include 'inc/header.php';
- 
- ?>
- <?php 
-    require 'backend/db.php';
-    $select = "SELECT * FROM banner";
-    $query = mysqli_query($db,$select);
-    $assoc = mysqli_fetch_assoc($query);
-    
-  ?>
-        <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+<?php
+include 'inc/header.php';
+
+//$db =  mysqli_connect('localhost','root','','test');
+
+$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+?>
+<?php
+$select = "SELECT * FROM contact";
+$query1 = mysqli_query($db,$select);
+$assoc = mysqli_fetch_assoc($query1);
+$id = $assoc['id'];
+
+$sel = "SELECT * FROM contact  WHERE id='$id'";
+$query2 = mysqli_query($db,$sel);
+$value = mysqli_fetch_assoc($query2);
+?>
+<!-- ========== Left Sidebar Start ========== -->
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -24,7 +32,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Contact Section</h2>
+                                  <h2>Изменить контакты</h2>
                                 </div>
                                 <?php 
                                         if (isset($_SESSION['success'])) {
@@ -41,9 +49,11 @@
                                         }
                                      ?>
                                 <form action="backend/contact-section-add.php" method="post" enctype="multipart/form-data">
-                                  <div class="form-group">
-                                    <label for="title1">Short Description</label>
-                                    <input type="text" class="form-control err" id="title1" name="title1">
+                                    <input type="hidden" value="<?php echo $value['id'] ?>" name="id">
+
+                                    <div class="form-group">
+                                    <label for="title1">Краткое описание</label>
+                                    <input type="text" class="form-control err" value="<?= $value['description'] ?>" id="title1" name="title1" >
                                 <!-- Title 1 error showing -->
                                   
                                     <?php 
@@ -69,8 +79,8 @@
                                   </div>
                                   
                                   <div class="form-group">
-                                    <label for="title2">Address</label>
-                                    <input type="text" class="form-control err" placeholder="Enter title 2" id="title2" name="title2">
+                                    <label for="title2">Адрес</label>
+                                    <input type="text" class="form-control err"  id="title2" name="title2" value="<?= $value['address'] ?>">
                                     <!-- title2 error showing -->
                                     <?php 
                                         if (isset($_SESSION['empty_title2'])) {
@@ -94,9 +104,9 @@
                                      ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="">Phone</label>
+                                    <label for="">Номер телефона</label>
                                   
-                                  <input type="text" class="form-control" name="phone">
+                                  <input type="text" class="form-control" name="phone" value="<?= $value['phone'] ?>">
                                   <!-- description error showing here -->
                                   <?php 
                                     if (isset($_SESSION['desc_err'])) {
@@ -111,11 +121,11 @@
                                    ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email">
+                                    <label for="email">Почта</label>
+                                    <input type="email" class="form-control"  name="email" value="<?= $value['email'] ?>">
                                 </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Изменить</button>
                                 </div>
                                   
                                 </form>

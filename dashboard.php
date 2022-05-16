@@ -1,12 +1,12 @@
 <?php include 'inc/header.php' ?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
-                                <h4 class="header-title mb-4">Account Overview</h4>
+                                <h4 class="header-title mb-4">Обзор учетной записи</h4>
                             </div>
                         </div>
                     </div>

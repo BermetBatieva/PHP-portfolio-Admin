@@ -1,6 +1,8 @@
 <?php 
 session_start();
-	require 'db.php';
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
 	$name = $_POST['name'];
 	$email = $_POST['email'];
 	$msg = $_POST['msg'];
@@ -14,7 +16,7 @@ session_start();
 				if (!empty($msg)) {
 					$insert = "INSERT INTO msg(name,email,msg) VALUES ('$name','$email','$msg')";
 					$que = mysqli_query($db,$insert);
-					$_SESSION['msg'] = 'Thank you for massaging us. we will reply.';
+					$_SESSION['msg'] = 'Спасибо за ваше сообщение!';
 					header('location:../index.php');
 				}
 			}else{

@@ -1,19 +1,20 @@
-<?php 
-    require 'backend/db.php';
-    
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
     $select = "SELECT * FROM review";
     $query = mysqli_query($db,$select);
     
  ?>
 <?php include 'inc/header.php';?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -22,7 +23,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Review Overview</h2>
+                                  <h2>Цитаты</h2>
                                 </div>
                                 <?php 
                                    if (isset($_SESSION['delete'])) {
@@ -40,12 +41,12 @@
                                  <table class="table table-striped table-hover">
                                     <thead>
                                       <tr>
-                                        <th>SL</th>
-                                        <th>Photo</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Review</th>
-                                        <th>Action</th>
+                                        <th>№</th>
+                                        <th>Фото</th>
+                                        <th>Имя</th>
+                                        <th>Статус</th>
+                                        <th>Обзор</th>
+                                        <th>Действия</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -62,9 +63,9 @@
                                                     <td><?= $value['user_status'] ?></td>
                                                     <td><?= substr($value['review'],0,50).'[...]' ?></td>
                                                     <td>
-                                        <a href="backend/edit-review.php?id=<?= $value['id'] ?>" style="background:#E98F2D;padding:5px;color:#fff;border-radius:2px">Approve</a>
+                                        <a href="backend/edit-review.php?id=<?= $value['id'] ?>" style="background:#E98F2D;padding:5px;color:#fff;border-radius:2px">Изменить</a>
                                               
-                                        <a href="backend/review-delete.php?id=<?=$value['id'] ?>"style="background:#FC324E;padding:5px;color:#fff;border-radius:2px;">Delete</a>
+                                        <a href="backend/review-delete.php?id=<?=$value['id'] ?>" style="background:#FC324E;padding:5px;color:#fff;border-radius:2px;">Удалить</a>
                                         
                                             </td>
                                             
@@ -81,10 +82,11 @@
                                                     <td><?= $value['user_status'] ?></td>
                                                     <td><?= substr($value['review'],0,50).'[...]' ?></td>
                                                     <td>
-                                            <a style="background:#AAAEB4;padding:5px;color:#fff;border-radius:2px">Approved</a>
+<!--                                            <a href="backend/edit-review.php?id=--><?//= $value['id'] ?><!--" style="background:#AAAEB4;padding:5px;color:#fff;border-radius:2px">Изменить</a>-->
                                               
-                                        <a href="#" data-toggle="modal" data-target="#myModal" style="background:#FC324E;padding:5px;color:#fff;border-radius:2px;">Delete</a>
-                                         <!-- The Modal -->
+                                        <a href="backend/review-delete.php?id=<?=$value['id'] ?>" data-toggle="modal" data-target="#myModal" style="background:#FC324E;padding:5px;color:#fff;border-radius:2px;">Удалить</a>
+                                                        <a href="backend/edit-review.php?id=<?= $value['id'] ?>" style="background:#E98F2D;padding:5px;color:#fff;border-radius:2px">Изменить</a>
+                                                        <!-- The Modal -->
                                               <div class="modal fade" id="myModal">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                   <div class="modal-content">
@@ -97,15 +99,19 @@
                                                     
                                                     <!-- Modal body -->
                                                     <div class="modal-body text-center">
-                                                      <h4 class="text-danger">Are you really want to delete this item <br>permanantly?</h4>
+                                                      <h4 class="text-danger">Вы действительно хотите <br>удалить?</h4>
                                                     </div>
                                                     
                                                     <!-- Modal footer -->
                                                     <div class="text-center m-3">
-                                                      <a href="backend/review-delete.php?id=<?= $value['id'] ?>" class="btn btn-primary">Confirm</a>
-                                                      <button type="button" class="btn btn-danger" data-dismiss="modal" href="">Close</button>
+                                                      <a href="backend/review-delete.php?id=<?= $value['id'] ?>" class="btn btn-primary">Подтвердить</a>
+                                                      <button type="button" class="btn btn-danger" data-dismiss="modal" href="">Закрыть</button>
                                                     </div>
-                                                    
+
+<!--                                                      <a href="edit-portfolio.php?id=--><?//= $value['id'] ?><!--"><img src="img/writing.png" alt="" style="height:25px; margin:5px"></a>-->
+<!---->
+<!--                                                      <a href="backend/portfolio-delete.php?id=--><?//= $value['id'] ?><!--"><img src="img/delete.png" alt="" style="height:25px; margin:5px"></i></a>-->
+<!--                                                    -->
                                                   </div>
                                                 </div>
                                               </div>

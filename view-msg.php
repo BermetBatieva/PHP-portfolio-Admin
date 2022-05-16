@@ -1,19 +1,24 @@
-<?php 
-    require 'backend/db.php';
-    
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
+
+
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
     $select = "SELECT * FROM msg order by id desc";
     $query = mysqli_query($db,$select);
     
  ?>
 <?php include 'inc/header.php';?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -22,7 +27,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Message Overview</h2>
+                                  <h2>Сообщения</h2>
                                 </div>
                                 <?php 
                                    if (isset($_SESSION['delete'])) {
@@ -40,12 +45,12 @@
                                  <table class="table table-hover">
                                     <thead>
                                       <tr>
-                                        <th>SL</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Message</th>
+                                        <th>№</th>
+                                        <th>Имя</th>
+                                        <th>Почта</th>
+                                        <th>Сообщение</th>
                 
-                                        <th>Action</th>
+                                        <th>Действия</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -61,9 +66,9 @@
                                                     <td><?= $value['email'] ?></td>
                                                     <td><?= substr($value['msg'],0,50).'[...]' ?></td>
                                                     <td>
-                                        <a href="msg-read.php?id=<?= $value['id'] ?>" style="<?= $value['status']==1?'background:#DB574C;color:#fff;padding:5px;border-radius:3px':'background:#AAAEB4;color:#fff;padding:5px;border-radius:3px '; ?>"><?= $value['status']==1?'Unread':'Read' ?></a>
+                                        <a href="msg-read.php?id=<?= $value['id'] ?>" style="<?= $value['status']==1?'background:#DB574C;color:#fff;padding:5px;border-radius:3px':'background:#AAAEB4;color:#fff;padding:5px;border-radius:3px '; ?>"><?= $value['status']==1?'Непрочитанный':'Читать' ?></a>
                                               
-                                        <a href="backend/msg-delete.php?id=<?=$value['id'] ?>"style="background:#FC324E;padding:5px;color:#fff;border-radius:2px;">Delete</a>
+                                        <a href="backend/msg-delete.php?id=<?=$value['id'] ?>"style="background:#FC324E;padding:5px;color:#fff;border-radius:2px;">Удалить</a>
                                         
                                             </td>
                                             

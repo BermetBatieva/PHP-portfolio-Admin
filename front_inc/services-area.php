@@ -1,6 +1,9 @@
  <?php 
  	// require '../backend/db.php';
  	//selecting data from service_section table
+ $db =  mysqli_connect('localhost','root','','test');
+//  $db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+ mysqli_set_charset($db, "utf8mb4");
  	$select = "SELECT * FROM service_section";
     $query = mysqli_query($db,$select);
     $service = mysqli_fetch_assoc($query);

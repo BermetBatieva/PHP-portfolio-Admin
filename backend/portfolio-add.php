@@ -1,4 +1,7 @@
-<?php require 'db.php';
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
 	session_start();
 ?>
 
@@ -15,14 +18,14 @@
 		if (!empty($catagory)) {
 			$title_len = strlen($catagory);
 			if ($title_len >20 || $title_len <3 ) {
-				$_SESSION['title1_err'] = 'Please input a valid category!';
+				$_SESSION['title1_err'] = 'Пожалуйста, введите действительную категорию!';
 				header('location:../portfolio.php');
 			} else {
 				//checking title2 value here
 				if (!empty($heading)) {
 					$title2_len = strlen($heading);
 					if ($title2_len >30) {
-						$_SESSION['title2_err'] = 'Title must be less than 30 character!';
+						$_SESSION['title2_err'] = 'Заголовок должен содержать менее 30 символов!';
 						header('location:../portfolio.php');
 					}
 				//Checking description
@@ -30,17 +33,17 @@
 						$desc_len = strlen($desc);
 
 						if ($desc_len >2000 || $desc_len<100) {
-							$_SESSION['desc_err'] = 'Descripiton should be less than 2000 character and more than 100 character!';
+							$_SESSION['desc_err'] = 'Описание должно быть менее 2000 символов и более 100 символов!';
 							header('location:../portfolio.php');
 						}
 					}else{
-						$_SESSION['desc_err'] = 'Descripiton is required!';
+						$_SESSION['desc_err'] = 'Описание обязательно!';
 						header('location:../portfolio.php');
 					}
 					/*=========image validation started here==================*/
 					/*===========================================================*/
 					if ($_FILES['image']['name']==''){
-						$_SESSION['empty_image'] = 'Please upload a image';
+						$_SESSION['empty_image'] = 'Пожалуйста, загрузите изображение';
 						header('location:../portfolio.php');
 					}
 					else{

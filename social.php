@@ -3,13 +3,13 @@
     
  ?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -18,7 +18,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Add Social Media</h2>
+                                  <h2>Добавить социальную сеть</h2>
                                 </div>
                                 <form action="backend/social-add.php" method="post" enctype="multipart/form-data">
                                   <div class="form-group">
@@ -36,8 +36,8 @@
                                             unset($_SESSION['insert']);
                                         }
                                      ?>
-                                    <label for="label">Label</label>
-                                    <input type="text" class="form-control err" placeholder="Enter social media name" id="label" name="label">
+                                    <label for="label">Название</label>
+                                    <input type="text" class="form-control err" placeholder="Введите название социальной сети" id="label" name="label">
                                     <!-- social media error -->
                                     <span style= "color:red; font-size:15px;margin-left:5px">
                                         <?php 
@@ -53,11 +53,11 @@
                                     </span>
                                      </div>
                                      <div class="form-group">
-                                    <label for="link" class="">URL</label>
+                                    <label for="link" class="">URL(ссылка)</label>
                                     <input type="text" class="form-control" id="link" placeholder="https://socialmedia.com" name="link">
                                   </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Add to Banner</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Добавить в главный экран(баннер)</button>
                                 </div>
                                   
                                 </form>

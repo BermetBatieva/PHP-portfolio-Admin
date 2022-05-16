@@ -1,9 +1,11 @@
 <?php include 'inc/header.php';
  
  ?>
- <?php 
-    require 'backend/db.php';
-    $id = $_GET['id'];
+ <?php
+ $db =  mysqli_connect('localhost','root','','test');
+// $db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+ mysqli_set_charset($db, "utf8mb4");
+ $id = $_GET['id'];
     $select = "SELECT * FROM msg where id='$id'";
     $query = mysqli_query($db,$select);
     $assoc = mysqli_fetch_assoc($query);
@@ -13,13 +15,13 @@
     
   ?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+    <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -28,7 +30,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Message From User</h2>
+                                  <h2>Сообщение от юзера</h2>
                                 </div>
                                <div class="card ml-5">
                                 <p><?= $assoc['msg']?></p><br>

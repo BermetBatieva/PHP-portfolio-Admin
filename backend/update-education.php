@@ -1,4 +1,10 @@
-<?php require 'db.php'; session_start();?>
+<?php
+
+$db =  mysqli_connect('localhost','root','','test');
+
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+session_start();?>
 
 <?php 
 	$id = $_POST['id'];

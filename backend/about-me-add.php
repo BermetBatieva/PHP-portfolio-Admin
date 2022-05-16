@@ -1,11 +1,15 @@
-<?php require 'db.php';
+<?php
+
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
 	session_start();
 ?>
 
 <?php
 	//$id = ;
 	$title = $_POST['title'];
-	$description = $_POST['desc'];
+	$description = $_POST['description'];
 	$img = $_FILES['image'];
 	
 		if ($_SERVER['REQUEST_METHOD']='POST') {
@@ -20,7 +24,7 @@
 				//checking description value here
 				if (!empty($description)) {
 					$desc_len = strlen($description);
-					if ($desc_len >1000) {
+					if ($desc_len > 10000) {
 						$_SESSION['desc_err'] = 'Title must be less than 1000 character!';
 						header('location:../about-me.php');
 					}
@@ -50,7 +54,7 @@
 								$location = "../img/banner/".$img;
 								move_uploaded_file($_FILES['image']['tmp_name'], $location);
 								if ($q) {
-									$_SESSION['update'] = "Your Data Successfully Updated!";
+									$_SESSION['update'] = "Ваши Данные Успешно Обновлены!";
 									header('location:../about-me.php');
 
 								}
@@ -61,20 +65,20 @@
 								/*=====================================================================*/
 
 							} else {
-								$_SESSION['img_err'] = 'Your Image is too large!';
+								$_SESSION['img_err'] = 'Ваше изображение слишком большое!';
 							header('location:../about-me.php');
 							}
 							
 						}
 						else{
-							$_SESSION['img_err'] = 'This kind of image format is not allowed';
+							$_SESSION['img_err'] = 'Такой формат изображения не разрешен';
 							header('location:../about-me.php');
 						}
 						
 					}
 
 				} else {
-					$_SESSION['desc_err'] = 'Please tell about yourself';
+					$_SESSION['desc_err'] = 'Пожалуйста, расскажите о себе';
 					header('location:../about-me.php');
 				}
 				
@@ -82,7 +86,7 @@
 			
 		}
 		else{
-			$_SESSION['empty_title'] = 'Please enter a title';
+			$_SESSION['empty_title'] = 'Пожалуйста, введите название';
 			header('location:../about-me.php');
 		}
 	}

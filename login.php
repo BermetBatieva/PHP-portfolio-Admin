@@ -1,10 +1,14 @@
 <?php 
-	require 'db.php';
 	session_start();
-
+    //$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
 	//taking value from user input
+$db =  mysqli_connect('localhost','root','','test');
+
 	$email = $_POST['email'];
 	$pass = $_POST['password'];
+
+    mysqli_set_charset($db, "utf8mb4");
+
 
 	$sel = "SELECT * FROM users where email = '$email'";
 	$query = mysqli_query($db,$sel);
@@ -22,15 +26,15 @@
 			$_SESSION['img'] = $assoc['img'];
 			$_SESSION['status'] = $assoc['status'];
 
-			header('location:../dashboard.php');
+			header('location: dashboard.php');
 		}else{
 			$_SESSION['err'] ="Email and Password doesn't match!";
-			header('location:../frontend/page-login.php');
+			header('location: page-login.php');
 		} 
 	}
 	else{
 		$_SESSION['err'] ="Email and Password doesn't match!";
-		header('location:../frontend/page-login.php');
+		header('location:../page-login.php');
 	}
 
  ?>

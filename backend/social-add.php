@@ -1,5 +1,11 @@
-<?php 
-	require 'db.php';
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
+
+
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
 	session_start();
  ?>
  <?php 
@@ -26,7 +32,7 @@
  					break;
  				
  				default:
- 					$_SESSION['label_empty'] = 'Please enter social media name in smallercase!';
+ 					$_SESSION['label_empty'] = 'Пожалуйста, введите название социальной сети маленькими буквами!';
  					header('location:../social.php');
  					break;
  			}
@@ -35,15 +41,15 @@
  			$query = mysqli_query($db,$insert);
 
  			if ($query) {
- 				$_SESSION['insert'] = "Your Link added to website successfully!";
+ 				$_SESSION['insert'] = "Успешно добавлен!";
  				header('location:../social.php');
  			}
  			else{
- 				$_SESSION['label_empty'] = "Something wrong!";
+ 				$_SESSION['label_empty'] = "Произошла ошибка...";
  				header('location:../social.php');
  			}
  		} else {
- 			$_SESSION['label_empty'] = 'Please enter social media name!';
+ 			$_SESSION['label_empty'] = 'Пожалуйста, введите название социальной сети!';
  			header('location:../social.php');
  		}
  		

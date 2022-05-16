@@ -102,7 +102,7 @@
 	width: 48%;
 }
 .about-img {
-	margin-left: -65px;
+	margin-left: -45px;
 }
 .blog-sidebar {
 	padding-left: 0;
@@ -242,8 +242,8 @@ ul.navbar-nav {
 	font-size: 150px;
 }
 .about-img {
-	text-align: center;
-	margin-bottom: 50px;
+	text-align: left;
+	margin-bottom: 200px;
 }
 .about-slide-wrap {
 	margin-top: 50px;

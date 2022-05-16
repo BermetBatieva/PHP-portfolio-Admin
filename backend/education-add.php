@@ -1,4 +1,9 @@
-<?php require 'db.php'; session_start(); ?>
+<?php
+session_start();
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+?>
 
 <?php 
 	$name = $_POST['cir_name'];
@@ -9,7 +14,7 @@
 		if (!empty($name)) {
 			$title_len = strlen($name);
 			if ($title_len >100) {
-				$_SESSION['name_err'] = "Your cirtification name should be less than 100 character!";
+				$_SESSION['name_err'] = "Ваше имя сертификата должно содержать менее 100 символов!";
 				header('location:../education.php');
 			}
 			else{
@@ -22,28 +27,28 @@
 							$insert = "INSERT INTO education(name,year,result) VALUES('$name','$year','$res')";
 							$query = mysqli_query($db,$insert);
 							if ($query) {
-								$_SESSION['success'] = "Your data inserted successfully!";
+								$_SESSION['success'] = "Ваши данные успешно добавлены!";
 								header('location:../education.php');
 							}
 
 						}
 						else{
-							$_SESSION['result_empty'] = "Your result should be  less than or equal 100 percent!";
+							$_SESSION['result_empty'] = "Ваш результат должен быть меньше или равен 100 процентам!";
 							header('location:../education.php');
 						}
 					} else {
-						$_SESSION['result_empty'] = "Please Enter Your result!";
+						$_SESSION['result_empty'] = "Пожалуйста, Введите Свой результат!";
 						header('location:../education.php');
 					}
 					
 				}
 				else{
-					$_SESSION['year_empty'] = "Please Enter Your Cirtification Name!";
+					$_SESSION['year_empty'] = "Пожалуйста, введите год!";
 					header('location:../education.php');
 				}
 			}
 		} else {
-			$_SESSION['name_err'] = "Please Enter Your Cirtification Name!";
+			$_SESSION['name_err'] = "Пожалуйста, Введите имя сертификата!";
 			header('location:../education.php');
 		}
 		

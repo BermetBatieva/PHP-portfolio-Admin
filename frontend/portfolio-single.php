@@ -1,6 +1,9 @@
 <?php 
-    require '../backend/db.php';
-    $id = $_GET['id'];
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+$id = $_GET['id'];
+
     $select = "SELECT * FROM portfolio where id='$id'";
     $query = mysqli_query($db,$select);
     $assoc = mysqli_fetch_assoc($query);
@@ -30,7 +33,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Kufa - Personal Portfolio HTML5 Template</title>
+        <title>Portfolio</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -71,8 +74,8 @@
                         <div class="col-xl-12">
                             <div class="main-menu">
                                 <nav class="navbar navbar-expand-lg">
-                                    <a href="../index.php" class="navbar-brand logo-sticky-none"><img src="../img/logo/white_logo.png" alt="Logo"></a>
-                                    <a href="../index.php" class="navbar-brand s-logo-none"><img src="../img/logo/green_logo.png" alt="Logo"></a>
+                                    <a href="../index.php" class="navbar-brand logo-sticky-none"><img src="../assets/images/logo_sm.png" alt="Logo"></a>
+                                    <a href="../index.php" class="navbar-brand s-logo-none"><img src="../assets/images/logo_sm.png" alt="Logo"></a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                                         data-target="#navbarNav">
                                         <span class="navbar-icon"></span>
@@ -81,11 +84,11 @@
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNav">
                                         <ul class="navbar-nav ml-auto">
-                                            <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../index.php">about</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#service">service</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#portfolio">portfolio</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../index.php">главная</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../index.php">обо мне</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#service">навыки</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#portfolio">портфолио</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#contact">контакты</a></li>
                                         </ul>
                                     </div>
                                     <div class="header-btn">
@@ -111,15 +114,15 @@
                 </div>
                 <div class="side-info mb-30">
                     <div class="contact-list mb-30">
-                        <h4>Office Address</h4>
+                        <h4>Адрес учебного заведения</h4>
                         <p><?= $contact_data['address'] ?></p>
                     </div>
                     <div class="contact-list mb-30">
-                        <h4>Phone Number</h4>
+                        <h4>Контакты</h4>
                         <p><?= $contact_data['phone'] ?></p>
                     </div>
                     <div class="contact-list mb-30">
-                        <h4>Email Address</h4>
+                        <h4>Почта</h4>
                         <p><?= $contact_data['email'] ?></p>
                     </div>
                 </div>
@@ -147,7 +150,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-10">
                             <div class="breadcrumb-content text-center">
-                                <h2>SMCREATIVE PORTFOLIO</h2>
+                                <h2>Мои проекты</h2>
                             </div>
                         </div>
                     </div>
@@ -170,7 +173,7 @@
                                     <div class="blog-list-meta">
                                         <ul>
                                             <li class="blog-post-date">
-                                                <h3>Share On</h3>
+                                                <h3>Поделиться</h3>
                                             </li>
                                             <li class="blog-post-share">
                                             <?php 
@@ -193,10 +196,7 @@
                                             </div>
                                             <div class="post-avatar-content">
                                                 <h5><?= $user_data['name'] ?></h5>
-                                                <p>Vehicula dolor amet consectetur adipiscing elit. Cras sollicitudin, tellus vitae
-                                                    condimem
-                                                    egestliberos dolor auctor
-                                                    tellus.</p>
+                                                <p>С каждым проектом наши навыки улучшаются!</p>
                                                 <div class="post-avatar-social mt-15">
                                                    <?php 
                                                         foreach ($social as $key => $value) {
@@ -227,7 +227,7 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="copyright-text text-center">
-                                <p>Copyright© <span>SHAJEEB MAHMUD</span> | All Rights Reserved</p>
+                                <p><span>Бермет Батиева</span></p>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,8 @@
-<?php 
-	require 'db.php';
-	session_start();
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");	session_start();
 	error_reporting(0);
 	$id = $_POST['id'];
 	$heading = $_POST['heading'];
@@ -11,18 +13,18 @@
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		if (!empty($heading)) {
 			$head_len = strlen($heading);
-			if ($head_len > 25 || $head_len <10) {
-				$_SESSION['name_err'] = "Your title should be more than 10 and less than 25 character!";
+			if ($head_len > 25) {
+				$_SESSION['name_err'] = "Ваш заголовок должен менее 25 символов!";
 				header('location:../edit-services.php');
 			} else {
 				//description validation start here
 				if (empty($desc)) {
-					$_SESSION['desc_err'] = "Please write about your services.";
+					$_SESSION['desc_err'] = "Пожалуйста, напишите о ваших навыках!";
 					header('location:../edit-services.php');
 				} else {
 					$desc_len = strlen($desc);
-					if ($desc_len > 200 || $desc_len <50) {
-						$_SESSION['desc_err'] = "Your title should be more than 50 and less than 200 character!";
+					if ($desc_len > 1000) {
+						$_SESSION['desc_err'] = "Ваш заголовок должен содержать менее 1000 символов!";
 						header('location:../edit-services.php');
 				}
 				else{
@@ -30,11 +32,11 @@
 						$update = "UPDATE services SET heading='$heading',description='$desc',img='$service_icon' where id='$id'";
 							$query = mysqli_query($db,$update);
 							if ($query) {
-								$_SESSION['success'] = "Your Services Updated successfully!";
+								$_SESSION['success'] = "Ваши навыки успешно обновлены!";
 								header('location:../edit-services.php');
 							}
 						}else{
-							$_SESSION['icon_err'] = "Please enter icon name";
+							$_SESSION['icon_err'] = "Пожалуйста, введите название значка";
 							header('location:../edit-services.php');
 						}
 					}

@@ -1,21 +1,31 @@
-<?php include 'inc/header.php';
+<?php
+include 'inc/header.php';
  
  ?>
  <?php 
-    require 'backend/db.php';
-    $select = "SELECT * FROM banner";
-    $query = mysqli_query($db,$select);
-    $assoc = mysqli_fetch_assoc($query);
+// $db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+
+ $db =  mysqli_connect('localhost','root','','test');
+ mysqli_set_charset($db, "utf8mb4");
+
+ $select = "SELECT * FROM banner";
+ $query1 = mysqli_query($db,$select);
+ $assoc = mysqli_fetch_assoc($query1);
+ $id = $assoc['id'];
+
+ $sel = "SELECT * FROM banner  WHERE id='$id'";
+ $query2 = mysqli_query($db,$sel);
+ $value = mysqli_fetch_assoc($query2);
     
   ?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -24,7 +34,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Edit Banner Section</h2>
+                                  <h2>Изменить главный экран</h2>
                                 </div>
                                 <?php 
                                         if (isset($_SESSION['success'])) {
@@ -41,9 +51,10 @@
                                         }
                                      ?>
                                 <form action="backend/banner-add.php" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" value="<?php echo $value['id'] ?>" name="id">
                                   <div class="form-group">
-                                    <label for="title1">Title 1</label>
-                                    <input type="text" class="form-control err" id="title1" name="title1">
+                                    <label for="title1">Название 1</label>
+                                    <input type="text" class="form-control err"  id="title1" name="title1" value="<?= $value['title1'] ?>">
                                 <!-- Title 1 error showing -->
                                   
                                     <?php 
@@ -69,8 +80,8 @@
                                   </div>
                                   
                                   <div class="form-group">
-                                    <label for="title2">Title 2</label>
-                                    <input type="text" class="form-control err" placeholder="Enter title 2" id="title2" name="title2">
+                                    <label for="title2">Название 2</label>
+                                    <input type="text" class="form-control err"  id="title2" name="title2" value="<?= $value['title2'] ?>">
                                     <!-- title2 error showing -->
                                     <?php 
                                         if (isset($_SESSION['empty_title2'])) {
@@ -94,9 +105,9 @@
                                      ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description">Описание</label>
                                   
-                                  <textarea name="description" id="description" class="form-control" placeholder="Tell about yourself"></textarea>
+                                  <textarea name="description" id="description" class="form-control"><?= $value['description']?></textarea>
                                   <!-- description error showing here -->
                                   <?php 
                                     if (isset($_SESSION['desc_err'])) {
@@ -111,8 +122,9 @@
                                    ?>
                                   </div>
                                   <div class="form-group">
-                                      <label for="banner-img">Banner Image</label><br>
-                                      <input type="file" class="" style="border:none;" name="image"><br>
+                                      <label for="banner-img">Фото</label><br>
+                                      <img src="img/banner/<?= $value['image']?>" alt="img" width="150px"height="150px">
+                                      <input type="file" class="" style="border:none;" name="image" value="<?php echo $value['image']?>"><br>
                                       <?php 
                                          if (isset($_SESSION['empty_image'])) {
                                             ?>
@@ -135,7 +147,7 @@
                                        ?>
                                   </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
                                 </div>
                                   
                                 </form>

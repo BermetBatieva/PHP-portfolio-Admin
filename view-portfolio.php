@@ -1,19 +1,20 @@
-<?php 
-    require 'backend/db.php';
-    
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
     $select = "SELECT * FROM portfolio";
     $query = mysqli_query($db,$select);
     
  ?>
 <?php include 'inc/header.php';?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -22,7 +23,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Portfolio Overview</h2>
+                                  <h2>Портфолио</h2>
                                 </div>
                                 <?php 
                                    if (isset($_SESSION['delete'])) {
@@ -40,12 +41,12 @@
                                  <table class="table table-striped table-hover">
                                     <thead>
                                       <tr>
-                                        <th>SL</th>
-                                        <th>Category</th>
-                                        <th>Image</th>
-                                        <th>Heading</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
+                                        <th>№</th>
+                                        <th>Категория</th>
+                                        <th>Фото</th>
+                                        <th>Заголовок</th>
+                                        <th>Описание</th>
+                                        <th>Действие</th>
                                       </tr>
                                     </thead>
                                     <tbody>

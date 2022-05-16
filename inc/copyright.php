@@ -1,3 +1,3 @@
 <footer class="footer">
-                <?php echo date('Y') ?> © SHAJEEB MAHMUD CREATION
+                <?php echo date('Y') ?> © Батиева Бермет
  </footer>

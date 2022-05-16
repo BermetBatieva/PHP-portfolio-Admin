@@ -1,5 +1,10 @@
-<?php 
-	require 'db.php';
+<?php
+//
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
 	session_start();
 	error_reporting(0);
 
@@ -12,17 +17,17 @@
 		if (!empty($heading)) {
 			$head_len = strlen($heading);
 			if ($head_len > 25 || $head_len <10) {
-				$_SESSION['name_err'] = "Your title should be more than 10 and less than 25 character!";
+				$_SESSION['name_err'] = "Ваш заголовок должен содержать более 10 и менее 25 символов!";
 				header('location:../services.php');
 			} else {
 				//description validation start here
 				if (empty($desc)) {
-					$_SESSION['desc_err'] = "Please write about your services.";
+					$_SESSION['desc_err'] = "Пожалуйста, напишите о ваших навыках.";
 					header('location:../services.php');
 				} else {
 					$desc_len = strlen($desc);
 					if ($desc_len > 200 || $desc_len <50) {
-						$_SESSION['desc_err'] = "Your title should be more than 50 and less than 200 character!";
+						$_SESSION['desc_err'] = "Ваш заголовок должен содержать более 50 и менее 200 символов!";
 						header('location:../services.php');
 				}
 				else{
@@ -30,11 +35,11 @@
 							$insert = "INSERT INTO services (heading,description,img) VALUES('$heading','$desc','$service_icon')";
 							$query = mysqli_query($db,$insert);
 							if ($query) {
-								$_SESSION['success'] = "Your Services added successfully!";
+								$_SESSION['success'] = "Ваши навыки успешно добавлены!";
 								header('location:../services.php');
 							}
 						}else{
-							$_SESSION['icon_err'] = "Please enter icon name";
+							$_SESSION['icon_err'] = "Пожалуйста, введите название значка";
 							header('location:../services.php');
 						}
 					}
@@ -45,7 +50,7 @@
 		}
 	
 		else{
-			$_SESSION['name_err'] = "Please enter service heading";
+			$_SESSION['name_err'] = "Пожалуйста, введите заголовок";
 			header('location:../services.php');
 		}
 }

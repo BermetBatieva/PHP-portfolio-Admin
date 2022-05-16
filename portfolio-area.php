@@ -1,6 +1,9 @@
 <?php 
- 	// require '../backend/db.php';
- 	//selecting data from service_section table
+
+$db =  mysqli_connect('localhost','root','','test');
+//mysqli_set_charset($db, "utf8mb4");
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
  	$select = "SELECT * FROM portfolio";
     $query = mysqli_query($db,$select);
   
@@ -12,8 +15,8 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section-title text-center mb-70">
-                                <span>Portfolio Showcase</span>
-                                <h2>My Recent Best Works</h2>
+                                <span>Мои проекты</span>
+                                <h2>Мои лучшие работы</h2>
                             </div>
                         </div>
                     </div>
@@ -28,8 +31,8 @@
 										</div>
 										<div class="speaker-overlay">
 											<span><?= $value['catagory']?></span>
-											<h4><a href="frontend/portfolio-single.php?id=<?=$value['id'] ?>"><?= $value['heading']?></a></h4>
-											<a href="frontend/portfolio-single.php?id=<?=$value['id'] ?>" class="arrow-btn">More information <span></span></a>
+											<h4><a href=frontend/portfolio-single.php?id=<?=$value['id']?>"<?= $value['heading']?></a></h4>
+											<a href="frontend/portfolio-single.php?id=<?=$value['id'] ?>" class="arrow-btn">Больше.. <span></span></a>
 										</div>
 									</div>
 		                        </div>

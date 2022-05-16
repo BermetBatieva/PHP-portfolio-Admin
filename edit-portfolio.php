@@ -1,21 +1,26 @@
 <?php include 'inc/header.php';
     error_reporting(0);
+//
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+//mysqli_set_charset($db, "utf8mb4");
 
-   
-    require 'backend/db.php';
-    $id = $_GET['id'];
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+
+$id = $_GET['id'];
     $sel = "SELECT * FROM portfolio  WHERE id='$id'";
     $query = mysqli_query($db,$sel);
     $value = mysqli_fetch_assoc($query);
  ?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+        <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -25,7 +30,7 @@
                             <div class="card-box">
                                 <div class="jumbotron text-center">
                                   <img src="img/portfolio.png" alt="edit" height="80px">
-                                  <h2>Edit Portfolio</h2>
+                                  <h2>Изменить портфолио</h2>
                                 </div>
                                  <?php 
                                         if (isset($_SESSION['success'])) {
@@ -44,7 +49,7 @@
                                    <form action="backend/edit-portfolio-add.php" method="post" enctype="multipart/form-data">
                                     <input type="hidden" value="<?php echo $value['id'] ?>" name="id">
                                   <div class="form-group">
-                                    <label for="catagory">Catagory</label>
+                                    <label for="catagory">Категория</label>
                                     <input type="text" class="form-control err" id="catagory" name="catagory" value="<?= $value['catagory'] ?>">
                                 <!-- Title 1 error showing -->
                                   
@@ -71,7 +76,7 @@
                                   </div>
                                   
                                   <div class="form-group">
-                                    <label for="heading">Portfolio Heading</label>
+                                    <label for="heading">Заголовок портфолио</label>
                                     <input type="text" class="form-control err" value="<?= $value['heading'] ?>" id="heading" name="heading">
                                     <!-- title2 error showing -->
                                     <?php 
@@ -96,7 +101,7 @@
                                      ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description">Описание</label>
                                   
                                   <textarea name="description" id="description" class="form-control err">value="<?= $value['description']?>"</textarea>
                                   <!-- description error showing here -->
@@ -113,7 +118,7 @@
                                    ?>
                                   </div>
                                   <div class="form-group">
-                                      <label for="port-img">Portfolio Image</label><br>
+                                      <label for="port-img">Фото</label><br>
                                       <input type="file" class="" style="border:none;" name="image" value="<?php echo $value['img']?>"><br>
                                       <img src="img/portfolio/<?= $value['img']?>" alt="img" width="150px"height="150px">
                                       <?php 
@@ -138,7 +143,7 @@
                                        ?>
                                   </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Изменить</button>
                                 </div>
                                   
                                 </form>

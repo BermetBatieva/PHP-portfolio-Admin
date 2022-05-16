@@ -1,15 +1,20 @@
 <?php include 'inc/header.php';
+//
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
 
-    require 'backend/db.php';
- ?>
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -18,7 +23,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Services Title</h2>
+                                  <h2>Название раздела навыки</h2>
                                 </div>
                                  <?php 
                                         if (isset($_SESSION['success'])) {
@@ -36,8 +41,8 @@
                                      ?>
                                 <form action="backend/services-title-add.php" method="post">
                                 <div class="form-group">
-                                    <label for="short-title" class="">Title</label>
-                                    <input type="text" class="form-control err" id="short-title" placeholder="Enter short title" name="short-title">
+                                    <label for="short-title" class="">Название</label>
+                                    <input type="text" class="form-control err" id="short-title" placeholder="Введите название" name="short-title">
                                     <!-- error showing -->
                                     <?php 
                                         if (isset($_SESSION['stitle_err'])) {
@@ -53,8 +58,8 @@
                                      ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="title">Head Title</label>
-                                    <input type="text" id="title" name="title" placeholder="Enter Headig" class="form-control">
+                                    <label for="title">Заголовок</label>
+                                    <input type="text" id="title" name="title" placeholder="Введите навзание" class="form-control">
                                     <!-- error showing -->
                                     <?php 
                                         if (isset($_SESSION['title_err'])) {
@@ -69,7 +74,7 @@
                                      ?>
                                   </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Изменить</button>
                                 </div>
                                   
                                 </form>

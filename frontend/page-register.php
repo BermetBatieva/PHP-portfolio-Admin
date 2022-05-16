@@ -274,7 +274,7 @@
                         </form>
                         <div class="row m-t-50" style="">
                             <div class="col-sm-12 text-center">
-                                <p class="text-muted">Already have an account? <a href="page-login.php" class="text-dark m-l-5"><b>Sign In</b></a></p>
+                                <p class="text-muted">Already have an account? <a href="../page-login.php" class="text-dark m-l-5"><b>Sign In</b></a></p>
                             </div>
                         </div>
                     </div>

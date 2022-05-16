@@ -1,6 +1,11 @@
-  <?php 
+  <?php
+//  $db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
 
-    //selecting data from banner Table
+  $db =  mysqli_connect('localhost','root','','test');
+//  mysqli_set_charset($db, "utf8mb4");
+//  $db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+  mysqli_set_charset($db, "utf8mb4");
+  //selecting data from banner Table
     $select = "SELECT * FROM about_me";
     $query = mysqli_query($db,$select);
     $assoc = mysqli_fetch_assoc($query);
@@ -20,12 +25,12 @@
                         </div>
                         <div class="col-lg-6 pr-90">
                             <div class="section-title mb-25">
-                                <span>Introduction</span>
+                                <span>Вступление</span>
                                 <h2><?php echo $assoc['title'] ?></h2>
                             </div>
                             <div class="about-content">
                                 <p><?php echo nl2br($assoc['description']) ?></p>
-                                <h3>Education:</h3>
+                                <h3>Образование:</h3>
                             </div>
                             <!-- Education Item -->
                             <?php 

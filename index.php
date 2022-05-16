@@ -9,7 +9,7 @@
         <!-- header-end -->
 
         <!-- main-area -->
-       <?php include 'front_inc/banner-area.php' ?>
+       <?php include 'banner-area.php' ?>
             <!-- banner-area-end -->
 
             <!-- about-area-->
@@ -21,7 +21,7 @@
             <!-- Services-area-end -->
 
             <!-- Portfolios-area -->
-            <?php include 'front_inc/portfolio-area.php'?>
+            <?php include 'portfolio-area.php' ?>
             <!-- services-area-end -->
 
 
@@ -47,7 +47,7 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="copyright-text text-center">
-                                <p>Copyright© <span>SHAJEEB MAHMUD</span> | All Rights Reserved</p>
+                                <p><span>Бермет Батиева</span></p>
                             </div>
                         </div>
                     </div>

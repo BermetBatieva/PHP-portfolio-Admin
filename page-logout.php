@@ -12,15 +12,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App css -->
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
-        <script src="../assets/js/modernizr.min.js"></script>
+        <script src="assets/js/modernizr.min.js"></script>
 
     </head>
 
@@ -28,7 +28,7 @@
     <body class="account-pages">
 
         <!-- Begin page -->
-        <div class="accountbg" style="background: url('../assets/images/bg-1.jpg');background-size: cover;background-position: center;"></div>
+        <div class="accountbg" style="background: url('assets/images/bg-1.jpg');background-size: cover;background-position: center;"></div>
 
         <div class="wrapper-page account-page-full">
 
@@ -39,8 +39,8 @@
 
                         <div class="card-box p-5">
                             <h2 class="text-uppercase text-center pb-4">
-                                <a href="index.html" class="text-success">
-                                    <span><img src="../assets/images/logo.png" alt="" height="26"></span>
+                                <a href="index.php" class="text-success">
+                                    <span><img src="assets/images/logo_sm.png" alt="" height="30"></span>
                                 </a>
                             </h2>
 
@@ -63,9 +63,9 @@
                                     </div>
                                 </div>
 
-                                <h4>See You Again !</h4>
+                                <h4>Увидимся Снова!</h4>
 
-                                <p class="text-muted font-14 m-t-10"> You are now successfully sign out. Back to <a href="page-login.php" class="text-dark m-r-5"><b>Sign In</b></a></p>
+                                <p class="text-muted font-14 m-t-10"> Теперь вы успешно вышли из системы. Вернуться к <a href="page-login.php" class="text-dark m-r-5"><b>Войти</b></a></p>
                             </div>
 
                         </div>
@@ -75,7 +75,7 @@
             </div>
 
             <div class="m-t-40 text-center">
-                <p class="account-copyright">2018 © Highdmin. - Coderthemes.com</p>
+                <p class="account-copyright">Бермет Батиева</p>
             </div>
 
         </div>
@@ -83,15 +83,15 @@
 
 
         <!-- jQuery  -->
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/bootstrap.bundle.min.js"></script>
-        <script src="../assets/js/metisMenu.min.js"></script>
-        <script src="../assets/js/waves.js"></script>
-        <script src="../assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/metisMenu.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
 
         <!-- App js -->
-        <script src="../assets/js/jquery.core.js"></script>
-        <script src="../assets/js/jquery.app.js"></script>
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
 
     </body>
 

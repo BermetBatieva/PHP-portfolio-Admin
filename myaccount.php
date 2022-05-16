@@ -1,15 +1,15 @@
-<?php include 'inc/header.php';
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
 
-
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
  ?>
-        <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
-        <!-- Left Sidebar End -->
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-            <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+
+<?php include 'sidebar.php' ?>
+
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -18,7 +18,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>My Account</h2>
+                                  <h2>Мой аккаунт</h2>
                                 </div>
                                  <?php 
                                         if (isset($_SESSION['success'])) {

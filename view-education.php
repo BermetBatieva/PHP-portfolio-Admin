@@ -1,19 +1,24 @@
-<?php 
-    require 'backend/db.php';
-    
+<?php
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
+
+
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
     $select = "SELECT * FROM education";
     $query = mysqli_query($db,$select);
     
  ?>
 <?php include 'inc/header.php';?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -22,7 +27,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Education Overview</h2>
+                                  <h2>Просмотреть образование</h2>
                                 </div>
                                 <?php 
                                    if (isset($_SESSION['delete'])) {
@@ -40,11 +45,11 @@
                                  <table class="table table-striped table-hover">
                                     <thead>
                                       <tr>
-                                        <th>SL</th>
-                                        <th>Cirtification In</th>
-                                        <th>Year</th>
-                                        <th>Result (%)</th>
-                                        <th>Action</th>
+                                        <th>№</th>
+                                        <th>Сертификация в</th>
+                                        <th>Год</th>
+                                        <th>Результат (%)</th>
+                                        <th>Действие</th>
                                       </tr>
                                     </thead>
                                     <tbody>

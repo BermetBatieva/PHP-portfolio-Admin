@@ -1,6 +1,10 @@
 <?php 
-    //selecting data from services
-    //require '../backend/db.php';
+
+
+$db =  mysqli_connect('localhost','root','','test');
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+
+mysqli_set_charset($db, "utf8mb4");
     $sel_service = "SELECT COUNT(*) as total_service from services";
     $services_q = mysqli_query($db,$sel_service);
     $assoc_ser = mysqli_fetch_assoc($services_q);
@@ -21,7 +25,7 @@
                                     </div>
                                     <div class="fact-content">
                                         <h2><span class="count"><?=$assoc_ser['total_service']?></span></h2>
-                                        <span>Feature Services</span>
+                                        <span>Используемые продукты</span>
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +36,7 @@
                                     </div>
                                     <div class="fact-content">
                                         <h2><span class="count">345</span></h2>
-                                        <span> Successfull Delivery</span>
+                                        <span> Успешные проекты</span>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +47,7 @@
                                     </div>
                                     <div class="fact-content">
                                         <h2><span class="count"><?=$assoc_ser['total_service']?></span></h2>
-                                        <span>Quality Products</span>
+                                        <span>Навыки</span>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +58,7 @@
                                     </div>
                                     <div class="fact-content">
                                         <h2><span class="count">3</span>k</h2>
-                                        <span>Our Clients</span>
+                                        <span>Подписчики</span>
                                     </div>
                                 </div>
                             </div>

@@ -1,21 +1,28 @@
-<?php include 'inc/header.php';
+<?php
+include 'inc/header.php';
  
  ?>
- <?php 
-    require 'backend/db.php';
+ <?php
+ $db =  mysqli_connect('localhost','root','','test');
+//
+// mysqli_set_charset($db, "utf8mb4");
+
+
+// $db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+ mysqli_set_charset($db, "utf8mb4");
     // $select = "SELECT * FROM banner";
     // $query = mysqli_query($db,$select);
     // $assoc = mysqli_fetch_assoc($query);
     
   ?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -24,7 +31,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Add Portfolio</h2>
+                                  <h2>Добавить портфолио</h2>
                                 </div>
                                 <?php 
                                         if (isset($_SESSION['success'])) {
@@ -42,8 +49,8 @@
                                      ?>
                                 <form action="backend/portfolio-add.php" method="post" enctype="multipart/form-data">
                                   <div class="form-group">
-                                    <label for="catagory">Catagory</label>
-                                    <input type="text" class="form-control err" id="catagory" name="catagory" placeholder="Enter portfolio catagory.">
+                                    <label for="catagory">Категория</label>
+                                    <input type="text" class="form-control err" id="catagory" name="catagory" placeholder="Введите категорию портфолио.">
                                 <!-- Title 1 error showing -->
                                   
                                     <?php 
@@ -69,8 +76,8 @@
                                   </div>
                                   
                                   <div class="form-group">
-                                    <label for="heading">Portfolio Heading</label>
-                                    <input type="text" class="form-control err" placeholder="Enter portfolio heading" id="heading" name="heading">
+                                    <label for="heading">Заголовок портфолио</label>
+                                    <input type="text" class="form-control err" placeholder="Введите заголовок портфолио" id="heading" name="heading">
                                     <!-- title2 error showing -->
                                     <?php 
                                         if (isset($_SESSION['empty_title2'])) {
@@ -94,9 +101,9 @@
                                      ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description">Описание</label>
                                   
-                                  <textarea name="description" id="description" class="form-control err" placeholder="Write a description about this item"></textarea>
+                                  <textarea name="description" id="description" class="form-control err" placeholder="Напишите описание"></textarea>
                                   <!-- description error showing here -->
                                   <?php 
                                     if (isset($_SESSION['desc_err'])) {
@@ -111,7 +118,7 @@
                                    ?>
                                   </div>
                                   <div class="form-group">
-                                      <label for="port-img">Portfolio Image</label><br>
+                                      <label for="port-img">Фото</label><br>
                                       <input type="file" class="" style="border:none;" name="image"><br>
                                       <?php 
                                          if (isset($_SESSION['empty_image'])) {
@@ -135,7 +142,7 @@
                                        ?>
                                   </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Добавить</button>
                                 </div>
                                   
                                 </form>

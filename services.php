@@ -1,15 +1,20 @@
 <?php include 'inc/header.php';
 
-    require 'backend/db.php';
- ?>
+$db =  mysqli_connect('localhost','root','','test');
+//
+//mysqli_set_charset($db, "utf8mb4");
+
+//$db =  mysqli_connect('31.186.53.200','Batieva_db','CiZTlVaNf7','Batieva_db');
+mysqli_set_charset($db, "utf8mb4");
+?>
         <!-- ========== Left Sidebar Start ========== -->
-      <?php include 'inc/sidebar.php' ?>
+      <?php include 'sidebar.php' ?>
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
             <!-- Top Bar start -->
-            <?php include 'inc/topbar.php' ?>
+            <?php include 'topbar.php' ?>
             <!-- Top Bar End -->
             <!-- Start Page content -->
             <div class="content">
@@ -18,7 +23,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="jumbotron text-center">
-                                  <h2>Add Services</h2>
+                                  <h2>Добавить навыки</h2>
                                 </div>
                                  <?php 
                                         if (isset($_SESSION['success'])) {
@@ -36,8 +41,8 @@
                                      ?>
                                 <form action="backend/services-add.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="heading" class="">Title</label>
-                                    <input type="text" class="form-control <?php echo isset($_SESSION['name_err'])? 'err':'' ?>" id="heading" placeholder="Enter service heading" name="heading">
+                                    <label for="heading" class="">Название</label>
+                                    <input type="text" class="form-control <?php echo isset($_SESSION['name_err'])? 'err':'' ?>" id="heading" placeholder="Введите заголовок" name="heading">
                                     <!-- error showing -->
                                     <?php 
                                         if (isset($_SESSION['name_err'])) {
@@ -53,8 +58,8 @@
                                      ?>
                                   </div>
                                   <div class="form-group">
-                                    <label for="desc">Description</label>
-                                    <textarea name="description" id="desc" class="form-control <?php echo isset($_SESSION['desc_err'])? 'err':'' ?>"placeholder="Write a short description about your service"></textarea>
+                                    <label for="desc">Описание</label>
+                                    <textarea name="description" id="desc" class="form-control <?php echo isset($_SESSION['desc_err'])? 'err':'' ?>" placeholder="Напишите краткое описание о ваших навыках"></textarea>
                                     <!-- error showing -->
                                     <?php 
                                         if (isset($_SESSION['desc_err'])) {
@@ -69,8 +74,8 @@
                                      ?>
                                   </div>
                                    <div class="form-group">
-                                    <label for="icon">Add Font-Awesome Icon</label>
-                                    <input name="icon" id="icon" class="form-control <?php echo isset($_SESSION['icon_err'])? 'err':'' ?>"placeholder="Please enter icon name"/>
+                                    <label for="icon">Добавить иконку</label>
+                                    <input name="icon" id="icon" class="form-control <?php echo isset($_SESSION['icon_err'])? 'err':'' ?>"placeholder="название иконки"/>
                                     <!-- error showing -->
                                     <?php 
                                         if (isset($_SESSION['icon_err'])) {
@@ -85,7 +90,7 @@
                                      ?>
                                   </div>
                                 <div class="form-group text-center mt-3">
-                                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Добавить</button>
                                 </div>
                                   
                                 </form>
